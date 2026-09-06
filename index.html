@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>FOXPOST-Packeta választó</title>
+
+  <script src="https://cdn.foxpost.hu/apt-finder/v1/app/"></script>
+</head>
+
+<body style="font-family:sans-serif;padding:30px;text-align:center;">
+
+  <h2>FOXPOST-Packeta csomagpont kiválasztása</h2>
+
+  <button
+    id="packetaBtn"
+    style="padding:15px 25px;font-size:18px;border-radius:10px;cursor:pointer;">
+    Csomagpont kiválasztása
+  </button>
+
+  <script>
+
+    const button = document.getElementById("packetaBtn");
+
+    button.addEventListener("click", function () {
+
+      Packeta.Widget.pick(
+
+        "c095c4161ceee39f",
+
+        function (point) {
+          
+          if (!point || !point.name) {
+            alert("Nincs kiválasztott csomagpont!");
+            return;
+          }
+
+          const place = String(point.place ||"").trim();
+          
+          const name = String(point.name ||"").trim();
+          
+          const id = String(point.id ||"").trim();
+          
+          const params = new
+          URLSearchParams(window.location.search);
+
+          const returnUrl = 
+            params.get("returnUrl") ||
+            "https://tally.so/r/rj2lKM#packeta";
+          
+          const tallyUrl =
+            returnUrl
+            + "?packeta_place="
+            + encodeURIComponent(place)
+            + "&packeta_name="
+            + encodeURIComponent(name)
+            + "&packeta_id="
+            + encodeURIComponent(id);
+
+          document.body.innerHTML =
+  "<h2 style='font-family:sans-serif;text-align:center;padding-top:40px;'>Csomagpont kiválasztva.<br>Visszairányítás...</h2>";
+
+setTimeout(function () {
+
+  window.location.href = tallyUrl;
+
+}, 1000);
+
+
+        }
+
+      );
+
+    });
+
+  </script>
+
+</body>
+
+</html>
