@@ -12,11 +12,15 @@
 
   <h2>FOXPOST-Packeta csomagpont kiválasztása</h2>
 
-  <button
-    id="packetaBtn"
-    style="padding:15px 25px;font-size:18px;border-radius:10px;cursor:pointer;">
-    Csomagpont kiválasztása
-  </button>
+function receiveMessage(event) {
+    // if (event.origin !== 'https://cdn.foxpost.hu') {return};
+    var apt = JSON.parse(event.data);
+
+    console.log(apt.name, apt.findme);
+}
+
+window.addEventListener('message', receiveMessage, false);
+
 
   <script>
 
