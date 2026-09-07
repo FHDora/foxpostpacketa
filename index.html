@@ -12,7 +12,13 @@ function receiveMessage(event) {
     console.log(apt.name, apt.findme);
 }
 
-window.addEventListener('message', receiveMessage, false);
+<button
+    id="packetaBtn"
+    style="padding:15px 25px;font-size:18px;border-radius:10px;cursor:pointer;">
+    Csomagpont kiválasztása
+  </button>
+  
+  window.addEventListener('message', receiveMessage, false);
 
 
   <script>
