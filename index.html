@@ -11,20 +11,6 @@ function receiveMessage(event) {
 
     console.log(apt.name, apt.findme);
 }
-  
-  window.addEventListener('message', receiveMessage, false);
-
-    
-      Packeta.Widget.pick(
-
-        "c095c4161ceee39f",
-
-        function (point) {
-          
-          if (!point || !point.name) {
-            alert("Nincs kiválasztott csomagpont!");
-            return;
-          }
 
           const place = String(point.place ||"").trim();
           
@@ -37,15 +23,15 @@ function receiveMessage(event) {
 
           const returnUrl = 
             params.get("returnUrl") ||
-            "https://tally.so/r/RGNKA4#packeta";
+            "https://tally.so/r/RGNKA4";
           
           const tallyUrl =
             returnUrl
-            + "?packeta_place="
+            + "?foxpost_place="
             + encodeURIComponent(place)
-            + "&packeta_name="
+            + "&foxpost_name="
             + encodeURIComponent(name)
-            + "&packeta_id="
+            + "&foxpost_id="
             + encodeURIComponent(id);
 
           document.body.innerHTML =
